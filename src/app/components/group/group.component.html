@@ -1,0 +1,21 @@
+<div class="jumbotron h-100">
+  <div class="row container">
+    <div class="col-md-8">
+      <div class="row">
+        <p class="labels">Name of Subject: </p><p class="items"> {{group.nameOfSubject}}</p>
+      </div>
+      <div class="row">
+        <p class="labels">Number of People: </p><p class="items">{{group.numberOfPeople}}</p>
+      </div>
+      <div class="row">
+        <p class="labels">Group id: </p><p class="items"> {{group.groupID}}</p>
+      </div>
+      <div class="row">
+        <p class="labels">Date: </p><p class="items"> {{group.date}}</p>
+      </div>
+      <div class="col-md-4 align-self-center">
+        <button class="btn btn-secondary" (click)="open()">Add your choice</button>
+      </div>
+    </div>
+  </div>
+</div>

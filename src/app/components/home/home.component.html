@@ -1,0 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+  <div class="row container-fluid">
+    <a class="col-md-2 navbar-brand">
+      <h2 class="logo">
+        <i class="fa fa-balance-scale fa-2x "></i>
+      </h2>
+      <h4 class="logo-text">{{title}}</h4>
+    </a>
+    <div class="offset-md-3 col-md-6 float-right ">
+      <ul class="navbar float-right">
+        <li><a class="btn btn-link" (click)="goToTimetableView()" style="font-size:100%">Log in</a></li>
+        <li><a class="btn btn-link" (click)="goToTimetableView()" style="font-size:100%">Sign in</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid row">
+  <div class="offset-md-3 offset-sm-0 col-md-6 col-sm-12 main-content">
+    <app-timetable [hidden]="currentView!='TIMETABLE'"></app-timetable>
+  </div>
+</div>
+
