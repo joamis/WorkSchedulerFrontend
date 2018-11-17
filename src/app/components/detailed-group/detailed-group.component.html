@@ -1,0 +1,36 @@
+<div class="modal-header">
+  <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="jumbotron h-100">
+  <div class="row container">
+    <div class="col-md-8">
+      <div class="row">
+        <p class="labels">Name of Subject: </p><p class="items"> {{groupWithPref.group.nameOfSubject}}</p>
+      </div>
+      <div class="row">
+        <p class="labels">Number of People: </p><p class="items">{{groupWithPref.group.numberOfPeople}}</p>
+      </div>
+      <div class="row">
+        <p class="labels">Group id: </p><p class="items"> {{groupWithPref.group.groupID}}</p>
+      </div>
+      <div class="row">
+        <p class="labels">Date: </p><p class="items"> {{groupWithPref.group.date}}</p>
+      </div>
+      <div class="row">
+        <p class="labels">Number of points: {{groupWithPref.preference.numberOfPoints}} </p> <input type="number" min="0" max="100" step="1" id="n1" name="age" pattern="\d+" [(ngModel)] = "increaseValue">
+        <p>Increased value: {{increaseValue}}</p>
+      </div>
+      <div class="row">
+        <button class="btn-success float-right" (click)="updatePreference()">Update preference</button>
+      </div>
+      <div class="row">
+        <button class="btn-success float-right" (click)="deletePreference()">Delete preference</button>
+      </div>
+      <div class="row">
+      <p class="labels">Counter</p><p class="items">{{counter.usedNumberOfPoints}}/{{counter.totalNumberOfPoints}}</p>
+    </div>
+  </div>
+</div>
+</div>

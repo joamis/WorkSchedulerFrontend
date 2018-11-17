@@ -10,6 +10,7 @@ import { HttpClientModule} from '@angular/common/http';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DetailedGroupComponent } from './components/detailed-group/detailed-group.component';
 import {PreferenceService} from './services/preference.service';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,8 @@ import {PreferenceService} from './services/preference.service';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    FormsModule
   ],
   entryComponents: [DetailedGroupComponent],
   providers: [GroupService, PreferenceService],
