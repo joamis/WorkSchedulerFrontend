@@ -11,6 +11,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DetailedGroupComponent } from './components/detailed-group/detailed-group.component';
 import {PreferenceService} from './services/preference.service';
 import { FormsModule } from '@angular/forms';
+import { ReadyTimetableComponent } from './components/ready-timetable/ready-timetable.component';
+import {ReadytimetableService} from './services/readytimetable.service';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     TimetableComponent,
     GroupComponent,
-    DetailedGroupComponent
+    DetailedGroupComponent,
+    ReadyTimetableComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +31,7 @@ import { FormsModule } from '@angular/forms';
     FormsModule
   ],
   entryComponents: [DetailedGroupComponent],
-  providers: [GroupService, PreferenceService],
+  providers: [GroupService, PreferenceService, ReadytimetableService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

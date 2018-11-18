@@ -5,6 +5,7 @@ import {forkJoin} from 'rxjs';
 import {GroupWithPreference} from '../../models/GroupWithPreference';
 import {Preference} from '../../models/Preference';
 import {GroupClass} from '../../models/GroupClass';
+import {ReadytimetableService} from '../../services/readytimetable.service';
 
 export class Counter {
   private preferences: Preference[] = [];
@@ -47,13 +48,14 @@ export class Counter {
 
 export class TimetableComponent implements OnInit {
 
-  constructor(private groupService: GroupService, private preferencesServiec: PreferenceService) {
+  constructor(private groupService: GroupService, private preferencesServiec: PreferenceService, private readyTimetableService: ReadytimetableService) {
   }
 
 
   counter: Counter = new Counter();
   groups: GroupWithPreference[] = [];
   preferencesMap: Map<string, Preference> = new Map();
+  groups2: GroupClass[] = [];
 
   ngOnInit() {
     this.getGroups();
@@ -88,5 +90,11 @@ export class TimetableComponent implements OnInit {
     this.preferencesServiec.postPreferences(preferences.filter((preference) => {
       return preference.nameOfSubject !== '';
     })).subscribe(() => console.log(this.counter.usedNumberOfPoints));
+  }
+
+  getReadyTimetable(): void {
+    console.log('works123');
+    this.readyTimetableService.getReadyTimetable()
+      .subscribe(group => this.groups2 = group);
   }
 }
