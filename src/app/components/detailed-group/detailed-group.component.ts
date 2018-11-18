@@ -28,6 +28,7 @@ export class DetailedGroupComponent implements OnInit {
     const increaseNumber: number = this.increaseValue;
     if (this.counter.updateNumberOfPoints(increaseNumber)) {
       this.groupWithPref.preference.nameOfSubject = this.groupWithPref.group.nameOfSubject;
+      this.groupWithPref.preference.groupID = this.groupWithPref.group.groupID;
       this.groupWithPref.preference.numberOfPoints += increaseNumber;
       console.log(this.counter.usedNumberOfPoints);
       this.preferenceUpdated.emit();

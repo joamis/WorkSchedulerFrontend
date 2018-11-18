@@ -63,12 +63,13 @@ export class TimetableComponent implements OnInit {
     forkJoin(this.groupService.getGroups(), this.preferencesServiec.getPreferences()).subscribe(results => {
       const groups: GroupClass[] = results[0];
       const preferences: Preference[] = results[1];
+      console.log(preferences);
       preferences.forEach((preference) => {
         this.preferencesMap.set(preference.nameOfSubject + preference.groupID.toString(), preference);
       });
       this.counter.addPreferences(preferences)
       if (!this.counter.updateNumberOfPoints()) {
-        console.log('Poczatkowa ilosc punktow preferencji jest nieprawidlowa')
+        console.log('Poczatkowa ilosc punktow preferencji jest nieprawidlowa');
       }
       console.log(this.counter.totalNumberOfPoints);
       for (const group of groups) {
