@@ -50,12 +50,12 @@ export class TimetableComponent implements OnInit {
 
   constructor(private groupService: GroupService, private preferencesServiec: PreferenceService, private readyTimetableService: ReadytimetableService) {
   }
-
-
   counter: Counter = new Counter();
   groups: GroupWithPreference[] = [];
   preferencesMap: Map<string, Preference> = new Map();
   groups2: GroupClass[] = [];
+  currentView = 'TIMETABLE';
+  readyTimetableView = 'READYTIMETABLE';
 
   ngOnInit() {
     this.getGroups();
@@ -93,6 +93,7 @@ export class TimetableComponent implements OnInit {
   }
 
   getReadyTimetable(): void {
+    this.currentView = this.readyTimetableView;
     console.log('works123');
     this.readyTimetableService.getReadyTimetable()
       .subscribe(group => this.groups2 = group);

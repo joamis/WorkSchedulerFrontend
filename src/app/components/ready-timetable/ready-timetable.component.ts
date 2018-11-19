@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {ReadytimetableService} from '../../services/readytimetable.service';
 import {GroupClass} from '../../models/GroupClass';
 
@@ -11,7 +11,7 @@ export class ReadyTimetableComponent implements OnInit {
 
   constructor(private readyTimetableService: ReadytimetableService) { }
 
-  groups: GroupClass[] = [];
+  @Input() group: GroupClass[] = [];
   ngOnInit() {
   }
 
