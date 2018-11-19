@@ -22,4 +22,5 @@ export class HomeComponent implements OnInit {
   goToRegistrationView() {
     this.currentView = this.registrationView;
   }
+
 }

@@ -15,6 +15,8 @@ export class RegistrationComponent implements OnInit {
   user: User = new User();
  // @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
+  currentView = 'REGISTER'
+  homeView = 'HOME'
   ngOnInit() {
   }
 
@@ -29,5 +31,9 @@ export class RegistrationComponent implements OnInit {
  /* goToLogin() {
     this.notify.emit('Back to login');
   }*/
+
+  goHome() {
+    this.currentView = this.homeView;
+  }
 
 }
