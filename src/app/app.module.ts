@@ -13,6 +13,7 @@ import {PreferenceService} from './services/preference.service';
 import { FormsModule } from '@angular/forms';
 import { ReadyTimetableComponent } from './components/ready-timetable/ready-timetable.component';
 import {ReadytimetableService} from './services/readytimetable.service';
+import { RegistrationComponent } from './components/registration/registration.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {ReadytimetableService} from './services/readytimetable.service';
     TimetableComponent,
     GroupComponent,
     DetailedGroupComponent,
-    ReadyTimetableComponent
+    ReadyTimetableComponent,
+    RegistrationComponent
   ],
   imports: [
     BrowserModule,
