@@ -14,6 +14,8 @@ import { FormsModule } from '@angular/forms';
 import { ReadyTimetableComponent } from './components/ready-timetable/ready-timetable.component';
 import {ReadytimetableService} from './services/readytimetable.service';
 import { RegistrationComponent } from './components/registration/registration.component';
+import { LoginComponent } from './components/login/login.component';
+import {LoginService} from './services/login.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import { RegistrationComponent } from './components/registration/registration.co
     GroupComponent,
     DetailedGroupComponent,
     ReadyTimetableComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,7 @@ import { RegistrationComponent } from './components/registration/registration.co
     FormsModule
   ],
   entryComponents: [DetailedGroupComponent],
-  providers: [GroupService, PreferenceService, ReadytimetableService],
+  providers: [GroupService, PreferenceService, ReadytimetableService, LoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

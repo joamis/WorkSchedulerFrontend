@@ -12,6 +12,8 @@ export class HomeComponent implements OnInit {
   currentView = 'HOME';
   timetableView = 'TIMETABLE';
   registrationView = 'REGISTER';
+  loginView = 'LOGIN';
+
   constructor() { }
   ngOnInit() {
   }
@@ -26,6 +28,10 @@ export class HomeComponent implements OnInit {
 
   goHome($event: string) {
     this.currentView = this.homeView;
+  }
+
+  goToLoginView(){
+    this.currentView = this.loginView;
   }
 
 }

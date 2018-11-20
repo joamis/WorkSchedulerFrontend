@@ -1,0 +1,20 @@
+<div [hidden]="currentView!=this.loginView" class="jumbotron h-100" style="margin-top:5%; margin-bottom:5%" >
+  <div class="jumbotron h-100" style="margin-top:5%; margin-bottom:5%; margin-right: 25%; margin-left: 25%">
+    <form #mealAddition="ngForm" (ngSubmit)="postUser()">
+
+      <div class="form-group">
+        <label class='labels' for="login">Login</label>
+        <input type="text" class="form-control" id="login" name="login"
+               required
+               [(ngModel)]="user.username">
+      </div>
+
+      <div class="form-group">
+        <label class='labels' for="password">Password</label>
+        <input type="password" class="form-control" id="password" name="password"
+               [(ngModel)]="user.password">
+      </div>
+      <button type="submit" class="btn btn-secondary float-right">Log in</button>
+    </form>
+  </div>
+</div>

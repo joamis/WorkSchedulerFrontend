@@ -9,7 +9,7 @@
     </a>
     <div class="offset-md-3 col-md-6 float-right ">
       <ul class="navbar float-right">
-        <li><a class="btn btn-link" (click)="goToTimetableView()" style="font-size:100%">Log in</a></li>
+        <li><a class="btn btn-link" (click)="goToLoginView()" style="font-size:100%">Log in</a></li>
         <li><a class="btn btn-link" (click)="goToRegistrationView()" style="font-size:100%">Sign in</a></li>
       </ul>
     </div>
@@ -20,6 +20,7 @@
   <div class="offset-md-3 offset-sm-0 col-md-6 col-sm-12 main-content">
     <app-timetable [hidden]="currentView!='TIMETABLE'"></app-timetable>
     <app-registration [hidden]="currentView!='REGISTER'" (notify)="goHome($event)"></app-registration>
+    <app-login [hidden]="currentView!='LOGIN'"></app-login>
   </div>
 </div>
 
