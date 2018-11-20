@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+  homeView = 'HOME';
   title = 'WorkScheduler';
   currentView = 'HOME';
   timetableView = 'TIMETABLE';
@@ -21,6 +22,10 @@ export class HomeComponent implements OnInit {
 
   goToRegistrationView() {
     this.currentView = this.registrationView;
+  }
+
+  goHome($event: string) {
+    this.currentView = this.homeView;
   }
 
 }

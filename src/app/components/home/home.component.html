@@ -19,7 +19,7 @@
 <div class="container-fluid row">
   <div class="offset-md-3 offset-sm-0 col-md-6 col-sm-12 main-content">
     <app-timetable [hidden]="currentView!='TIMETABLE'"></app-timetable>
-    <app-registration [hidden]="currentView!='REGISTER'"></app-registration>
+    <app-registration [hidden]="currentView!='REGISTER'" (notify)="goHome($event)"></app-registration>
   </div>
 </div>
 

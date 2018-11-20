@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User} from '../../models/User';
 import {RegistrationService} from '../../services/registration.service';
+import {window} from 'rxjs/operators';
 
 
 @Component({
@@ -13,7 +14,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private registrationService: RegistrationService) { }
   user: User = new User();
- // @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+ @Output() notify: EventEmitter<string> = new EventEmitter<string>();
 
   currentView = 'REGISTER'
   homeView = 'HOME'
@@ -28,12 +29,8 @@ export class RegistrationComponent implements OnInit {
     });
   }
 
- /* goToLogin() {
-    this.notify.emit('Back to login');
-  }*/
-
   goHome() {
-    this.currentView = this.homeView;
+    this.notify.emit('Back to login');
   }
 
 }
