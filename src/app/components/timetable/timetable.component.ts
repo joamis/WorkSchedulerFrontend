@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnChanges, OnInit, SimpleChanges} from '@angular/core';
 import {GroupService} from '../../services/group.service';
 import {PreferenceService} from '../../services/preference.service';
 import {forkJoin} from 'rxjs';
@@ -6,31 +6,36 @@ import {GroupWithPreference} from '../../models/GroupWithPreference';
 import {Preference} from '../../models/Preference';
 import {GroupClass} from '../../models/GroupClass';
 import {ReadytimetableService} from '../../services/readytimetable.service';
+import {LoggedStudentService} from '../../services/logged-student.service';
+import {Student, SubjectId} from '../../models/Student';
 
 export class Counter {
   private preferences: Preference[] = [];
+
   constructor(
-  public totalNumberOfPoints: number = 100,
-  public usedNumberOfPoints: number = 0) {
+    public totalNumberOfPoints: number = 100,
+    public usedNumberOfPoints: number = 0) {
   }
 
 
-  updateNumberOfPoints(pointsAdded: number = 0): boolean
-    {
-      if (this.preferences.length === 0) {
-        return false;
+  updateNumberOfPoints(pointsAdded: number = 0): boolean {
+    if (this.preferences.length === 0) {
+      return false;
+    }
+    let usedNumberOfPoints = 0;
+    for (let i = 0; i < this.preferences.length; i++) {
+      console.log(this.preferences[i])
+        if (this.preferences[i].nameOfSubject === '') {
+          continue;
       }
-    let usedNumberOfPoints = 0
-       for (let i = 0; i < this.preferences.length; i++)
-       {
-         usedNumberOfPoints += this.preferences[i].numberOfPoints;
-       }
-       console.log('used number of points' + usedNumberOfPoints)
-       if ((usedNumberOfPoints + pointsAdded) <= this.totalNumberOfPoints) {
-         this.usedNumberOfPoints = (usedNumberOfPoints + pointsAdded)
-         return true;
-       }
-       return false;
+      usedNumberOfPoints += this.preferences[i].numberOfPoints;
+    }
+    console.log('used number of points' + usedNumberOfPoints);
+    if ((usedNumberOfPoints + pointsAdded) <= this.totalNumberOfPoints) {
+      this.usedNumberOfPoints = (usedNumberOfPoints + pointsAdded);
+      return true;
+    }
+    return false;
   }
 
   addPreferences(preferences: Preference[]) {
@@ -39,37 +44,49 @@ export class Counter {
 }
 
 
-
 @Component({
   selector: 'app-timetable',
   templateUrl: './timetable.component.html',
   styleUrls: ['./timetable.component.css']
 })
 
-export class TimetableComponent implements OnInit {
+export class TimetableComponent implements OnInit, OnChanges {
 
-  constructor(private groupService: GroupService, private preferencesServiec: PreferenceService, private readyTimetableService: ReadytimetableService) {
+  constructor(private groupService: GroupService, private preferencesServiec: PreferenceService) {
   }
+
+  @Input() student: Student;
   counter: Counter = new Counter();
   groups: GroupWithPreference[] = [];
   preferencesMap: Map<string, Preference> = new Map();
-  groups2: GroupClass[] = [];
-  currentView = 'TIMETABLE';
-  readyTimetableView = 'READYTIMETABLE';
 
   ngOnInit() {
-    this.getGroups();
+    this.reloadGroups();
   }
 
-  getGroups(): void {
-    forkJoin(this.groupService.getGroups(), this.preferencesServiec.getPreferences()).subscribe(results => {
+  private reloadGroups() {
+    if (this.student) {
+      console.log('Reloading groups')
+      this.getGroups();
+    }
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    console.log(changes)
+    this.reloadGroups();
+  }
+
+
+
+    getGroups(): void {
+    forkJoin(this.groupService.getGroups(), this.preferencesServiec.getPreferences(this.student)).subscribe(results => {
       const groups: GroupClass[] = results[0];
       const preferences: Preference[] = results[1];
       console.log(preferences);
       preferences.forEach((preference) => {
         this.preferencesMap.set(preference.nameOfSubject + preference.groupID.toString(), preference);
       });
-      this.counter.addPreferences(preferences)
+      this.counter.addPreferences(preferences);
       if (!this.counter.updateNumberOfPoints()) {
         console.log('Poczatkowa ilosc punktow preferencji jest nieprawidlowa');
       }
@@ -86,16 +103,9 @@ export class TimetableComponent implements OnInit {
   }
 
   updatePreferences() {
-    const preferences: Array<Preference> = Array.from(this.preferencesMap.values())
+    const preferences: Array<Preference> = Array.from(this.preferencesMap.values());
     this.preferencesServiec.postPreferences(preferences.filter((preference) => {
       return preference.nameOfSubject !== '';
-    })).subscribe(() => console.log(this.counter.usedNumberOfPoints));
-  }
-
-  getReadyTimetable(): void {
-    this.currentView = this.readyTimetableView;
-    console.log('works123');
-    this.readyTimetableService.getReadyTimetable()
-      .subscribe(group => this.groups2 = group);
+    }), () => { this.reloadGroups()});
   }
 }

@@ -39,6 +39,7 @@ export class DetailedGroupComponent implements OnInit {
 
   deletePreference() {
     this.groupWithPref.preference.nameOfSubject = '';
+    console.log(this.groupWithPref.preference)
     this.counter.updateNumberOfPoints();
     this.preferenceUpdated.emit();
     console.log(this.groupWithPref.preference);

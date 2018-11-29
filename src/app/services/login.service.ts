@@ -2,30 +2,28 @@ import {Injectable} from '@angular/core';
 import {userUrl} from '../api';
 import {User} from '../models/User';
 import {HttpClient} from '@angular/common/http';
-import {Router} from '@angular/router';
+import {LoggedStudentService} from './logged-student.service';
 
 @Injectable()
 export class LoginService {
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private loggedStudentService: LoggedStudentService) {
     this.isUserLoggedIn = false;
   }
 
   private isUserLoggedIn;
 
-  loginUser(user: User): void {
+  loginUser(user: User, invokeOnSuccess: Function): void {
     this.http.post<any>(userUrl,  JSON.stringify(user))
       .subscribe((res) => {
           console.log('User logged in');
           console.log(res);
           const token = res.token;
           const userFromDb = res.student;
-          console.log(userFromDb.username)
-          const username = userFromDb.username;
-          localStorage.setItem('authKey', token);
-          localStorage.setItem('username', username);
-          console.log('userFromDb');
-          console.log(userFromDb);
+          this.loggedStudentService.saveData(token, userFromDb);
+          console.log(this.loggedStudentService.getAuthKey())
+          console.log(this.loggedStudentService.getStudent())
+          invokeOnSuccess();
         },
         () => {
           alert('Wrong login and/or password');

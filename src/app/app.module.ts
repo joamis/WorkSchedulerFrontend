@@ -16,6 +16,8 @@ import {ReadytimetableService} from './services/readytimetable.service';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import {LoginService} from './services/login.service';
+import {LoggedStudentService} from './services/logged-student.service';
+import { AssignedWorkScheduleComponent } from './components/assigned-work-schedule/assigned-work-schedule.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +28,8 @@ import {LoginService} from './services/login.service';
     DetailedGroupComponent,
     ReadyTimetableComponent,
     RegistrationComponent,
-    LoginComponent
+    LoginComponent,
+    AssignedWorkScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +39,7 @@ import {LoginService} from './services/login.service';
     FormsModule
   ],
   entryComponents: [DetailedGroupComponent],
-  providers: [GroupService, PreferenceService, ReadytimetableService, LoginService],
+  providers: [GroupService, PreferenceService, ReadytimetableService, LoginService, LoggedStudentService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

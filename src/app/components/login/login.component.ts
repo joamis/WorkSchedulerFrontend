@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {User} from '../../models/User';
 import {LoginService} from '../../services/login.service';
 
@@ -12,6 +12,8 @@ export class LoginComponent implements OnInit {
   constructor(private loginService: LoginService) {
   }
 
+  @Output() userLogedIn: EventEmitter<void> = new EventEmitter<void>();
+
   loginView = 'LOGIN';
   currentView = this.loginView;
 
@@ -21,6 +23,8 @@ export class LoginComponent implements OnInit {
   }
 
   postUser() {
-    this.loginService.loginUser(this.user);
+    this.loginService.loginUser(this.user, () => {
+      this.userLogedIn.emit();
+    });
   }
 }

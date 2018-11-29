@@ -14,7 +14,7 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private registrationService: RegistrationService) { }
   user: User = new User();
- @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+ @Output() backButtonPressed: EventEmitter<string> = new EventEmitter<string>();
 
   currentView = 'REGISTER'
   homeView = 'HOME'
@@ -30,7 +30,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   goHome() {
-    this.notify.emit('Back to login');
+    this.backButtonPressed.emit('Back to login');
   }
 
 }

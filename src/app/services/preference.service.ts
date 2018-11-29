@@ -1,20 +1,30 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {preferenceUrl} from '../api';
 import {Preference} from '../models/Preference';
+import {Student} from '../models/Student';
+import {LoggedStudentService} from './logged-student.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PreferenceService {
 
-  constructor(private http: HttpClient) { }
-  getPreferences(): Observable<Preference[]> {
-    return this.http.get<Preference[]>(preferenceUrl);
+  constructor(private http: HttpClient, private loggedStudentService: LoggedStudentService) {
   }
-  postPreferences(preferences: Array<Preference>): Observable<Preference[]> {
+
+  getPreferences(student: Student): Observable<Preference[]> {
+    return this.http.get<Preference[]>(preferenceUrl + '/' + student._id);
+  }
+
+  postPreferences(preferences: Array<Preference>, onSuccess: Function): void {
+    console.log('postPreferences');
     console.log(preferences);
-    return this.http.post<Preference[]>(preferenceUrl, JSON.stringify(preferences));
+    this.http.post<Student>(preferenceUrl + '/' + this.loggedStudentService.getStudent()._id, JSON.stringify(preferences)).subscribe((student) => {
+      console.log(student)
+      this.loggedStudentService.updateStudent(student);
+      onSuccess();
+    });
   }
 }
