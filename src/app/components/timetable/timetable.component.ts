@@ -24,9 +24,9 @@ export class Counter {
     }
     let usedNumberOfPoints = 0;
     for (let i = 0; i < this.preferences.length; i++) {
-      console.log(this.preferences[i])
-        if (this.preferences[i].nameOfSubject === '') {
-          continue;
+      console.log(this.preferences[i]);
+      if (this.preferences[i].nameOfSubject === '') {
+        continue;
       }
       usedNumberOfPoints += this.preferences[i].numberOfPoints;
     }
@@ -66,20 +66,22 @@ export class TimetableComponent implements OnInit, OnChanges {
 
   private reloadGroups() {
     if (this.student) {
-      console.log('Reloading groups')
+      console.log('Reloading groups');
       this.getGroups();
     }
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    console.log(changes)
+    console.log(changes);
     this.reloadGroups();
   }
 
 
-
-    getGroups(): void {
+  getGroups(): void {
     forkJoin(this.groupService.getGroups(), this.preferencesServiec.getPreferences(this.student)).subscribe(results => {
+      this.counter = new Counter();
+      this.groups = [];
+      this.preferencesMap.clear();
       const groups: GroupClass[] = results[0];
       const preferences: Preference[] = results[1];
       console.log(preferences);
@@ -106,6 +108,8 @@ export class TimetableComponent implements OnInit, OnChanges {
     const preferences: Array<Preference> = Array.from(this.preferencesMap.values());
     this.preferencesServiec.postPreferences(preferences.filter((preference) => {
       return preference.nameOfSubject !== '';
-    }), () => { this.reloadGroups()});
+    }), () => {
+      this.reloadGroups();
+    });
   }
 }
