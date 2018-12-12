@@ -61,6 +61,10 @@ export class HomeComponent implements OnInit {
     this.currentView = this.timetableView;
   }
 
+  showTimetable() {
+    this.currentView = this.timetableView;
+  }
+
   isUserLoggedIn() {
     return this.loginService.isLoggedIn();
   }

@@ -13,6 +13,7 @@
           <li>
             <a [hidden]="isUserLoggedIn()" class="btn btn-link"  (click)="goToLoginView()" style="font-size:100%; font-family: Montserrat">Log in</a></li>
           <li>
+            <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="showTimetable()" style="font-size:100%; font-family: Montserrat">Show preferences</a>
             <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="logOut()" style="font-size:100%; font-family: Montserrat">Log out</a>
           </li>
           <li>
