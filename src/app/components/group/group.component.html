@@ -1,21 +1,20 @@
 <div class="container">
-  <div class="row container">
-    <div class="col-md-8">
+    <div class="information">
       <div class="row">
-        <p class="labels">Name of Subject: </p><p class="items"> {{groupWithPref.group.nameOfSubject}}</p>
+        <pre class="labels">Name of Subject: </pre><p class="items"> {{groupWithPref.group.nameOfSubject}}</p>
       </div>
       <div class="row">
-        <p class="labels">Number of People: </p><p class="items">{{groupWithPref.group.numberOfPeople}}</p>
+        <pre class="labels">Number of People: </pre><p class="items">{{groupWithPref.group.numberOfPeople}}</p>
       </div>
       <div class="row">
-        <p class="labels">Group id: </p><p class="items"> {{groupWithPref.group.groupID}}</p>
+        <pre class="labels">Group id: </pre><p class="items"> {{groupWithPref.group.groupID}}</p>
       </div>
       <div class="row">
-        <p class="labels">Date: </p><p class="items"> {{groupWithPref.group.date}}</p>
+        <pre class="labels">Date: </pre><p class="items"> {{groupWithPref.group.date}}</p>
+      </div>
+      <div class="row">
+        <button class="btn btn-info" style="float:right !important"(click)="open() data">Choose</button>
       </div>
     </div>
-    <div class="col-md-4 align-self-center">
-      <button class="btn btn-secondary" (click)="open()">Add your preference</button>
-    </div>
-  </div>
+
 </div>
