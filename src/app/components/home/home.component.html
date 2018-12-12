@@ -1,21 +1,27 @@
-<div>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+  <nav class="navbar navbar-expand-lg navbar-light bg-info sticky-top">
     <div class="row container-fluid">
       <a class="col-md-2 navbar-brand">
         <h2 class="logo">
           <i class="fa fa-balance-scale fa-2x "></i>
         </h2>
-        <h4 class="logo-text">{{title}}</h4>
+        <h4 class="logo-text" style="font-family: Montserrat, sans-serif; font-weight: bold;">{{title}}</h4>
       </a>
       <div class="offset-md-3 col-md-6 float-right ">
         <ul class="navbar float-right">
-          <li><a class="btn btn-link" (click)="goToLoginView()" style="font-size:100%">Log in</a></li>
-          <li><a class="btn btn-link" (click)="goToRegistrationView()" style="font-size:100%">Sign in</a></li>
+          <li>
+            <a [hidden]="isUserLoggedIn()" class="btn btn-link"  (click)="goToLoginView()" style="font-size:100%; font-family: Montserrat">Log in</a></li>
+          <li>
+            <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="logOut()" style="font-size:100%; font-family: Montserrat">Log out</a>
+          </li>
+          <li>
+            <a [hidden]="isUserLoggedIn()" class="btn btn-link"  (click)="goToRegistrationView()" style="font-size:100%; font-family: Montserrat">Sign in</a>
+          </li>
         </ul>
       </div>
     </div>
   </nav>
-</div>
 <div class="container-fluid row">
   <div class="offset-md-3 offset-sm-0 col-md-6 col-sm-12 main-content">
     <app-registration [hidden]="currentView!='REGISTER'" (backButtonPressed)="goHome($event)"></app-registration>
@@ -26,4 +32,3 @@
                                 [hidden]="currentView!='TIMETABLE' || !isScheduleAlreadyCalculated()"></app-assigned-work-schedule>
   </div>
 </div>
-<button (click)="logOut()"> log out</button>

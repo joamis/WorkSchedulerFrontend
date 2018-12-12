@@ -14,9 +14,6 @@ export class LoginComponent implements OnInit {
 
   @Output() userLogedIn: EventEmitter<void> = new EventEmitter<void>();
 
-  loginView = 'LOGIN';
-  currentView = this.loginView;
-
   user: User = new User();
 
   ngOnInit() {
