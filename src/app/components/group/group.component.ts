@@ -21,6 +21,10 @@ export class GroupComponent implements OnInit {
   ngOnInit() {
   }
 
+  isPreferenceActive(): boolean {
+    return this.groupWithPref.preference.nameOfSubject !== '';
+  }
+
   open(content) {
     const modalRef = this.modalService.open(DetailedGroupComponent);
     modalRef.componentInstance.groupWithPref = this.groupWithPref;
