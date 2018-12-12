@@ -1,1 +1,16 @@
+.modal-body{
+  display: block;
+}
 
+.labels {
+  font-family: Montserrat;
+  font-weight: bold;
+}
+
+.items{
+  font-weight: lighter;
+}
+
+.modal-header{
+  font-family: Montserrat;
+}

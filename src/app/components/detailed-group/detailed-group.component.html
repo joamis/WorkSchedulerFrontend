@@ -1,19 +1,48 @@
-<div class="modal" tabindex="-1" role="dialog">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
+<div class="modal-dialog modal-lg">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Choose number of points:</h3>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="row">
+        <pre class="labels">Name of Subject: </pre><pre class="items"> {{groupWithPref.group.nameOfSubject}}</pre>
       </div>
-      <div class="modal-body">
-        <p>Modal body text goes here.</p>
+      <div class="row">
+        <pre class="labels">Group id: </pre><pre class="items"> {{groupWithPref.group.groupID}}</pre>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary">Save changes</button>
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      <div class="row">
+        <pre class="labels">Number of People in this group: </pre><pre class="items">{{groupWithPref.group.numberOfPeople}}</pre>
       </div>
+      <div class="row">
+        <pre class="labels">Date: </pre><pre class="items"> {{groupWithPref.group.date}}</pre>
+      </div>
+      <div class="row">
+        <pre class="labels">Number of your points: {{groupWithPref.preference.numberOfPoints}} </pre>
+      </div>
+      <div class="row">
+        <input type="number" min="0" max="100" step="1" id="n1" name="age" pattern="\d+" [(ngModel)] = "increaseValue">
+      </div>
+      <div class="row">
+        <pre class="labels">Increased value: {{increaseValue}}</pre>
+      </div>
+      <div class="row">
+        <pre class="labels">Counter: </pre><p class="items">{{counter.usedNumberOfPoints}}/{{counter.totalNumberOfPoints}}</p>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-info" (click)="updatePreference()">Update preference</button>
+      <button class="btn btn-info" (click)="deletePreference()">Delete preference</button>
     </div>
   </div>
 </div>
+
+
+
+
+
+
+
+
