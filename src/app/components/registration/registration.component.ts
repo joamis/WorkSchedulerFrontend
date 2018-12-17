@@ -16,8 +16,7 @@ export class RegistrationComponent implements OnInit {
   user: User = new User();
  @Output() backButtonPressed: EventEmitter<string> = new EventEmitter<string>();
 
-  currentView = 'REGISTER'
-  homeView = 'HOME'
+
   ngOnInit() {
   }
 
@@ -30,7 +29,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   goHome() {
-    this.backButtonPressed.emit('Back to login');
+    this.backButtonPressed.emit('Back to home');
   }
 
 }

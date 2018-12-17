@@ -1,0 +1,27 @@
+<div class="container">
+  <div class="information">
+    <div class="row">
+      <button class="btn btn-info" style="float:right !important"(click)=open() data-toggle="modal" data-target="#myModal">Subjects</button>
+    </div>
+  </div>
+  <div class="information">
+  <div class="row">
+    <button class="btn btn-info" style="float:right !important"(click)=open() data-toggle="modal" data-target="#myModal">Students</button>
+  </div>
+  </div>
+  <div class="information">
+    <div class="row">
+      <button class="btn btn-info" style="float:right !important"(click)=open() data-toggle="modal" data-target="#myModal">Users</button>
+    </div>
+  </div>
+  <div class="information">
+    <div class="row">
+      <button class="btn btn-info" (click)=open() data-toggle="modal" data-target="#CalculateModal">Calculate Schedule</button>
+    </div>
+  </div>
+</div>
+
+<div [hidden]="currentView!=this.calculateView">
+  <app-calculate-schedule (notify)="goToAdminView($event)" ></app-calculate-schedule>
+</div>
+

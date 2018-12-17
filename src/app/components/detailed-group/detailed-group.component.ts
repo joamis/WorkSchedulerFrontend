@@ -12,7 +12,7 @@ import {Counter} from '../timetable/timetable.component';
   styleUrls: ['./detailed-group.component.css']
 })
 export class DetailedGroupComponent implements OnInit {
-  @Input() groupWithPref: GroupWithPreference = new GroupWithPreference(new GroupClass(), new Preference());
+  @Input() groupWithPref: GroupWithPreference = new GroupWithPreference(new GroupClass() , new Preference());
   @Input() counter: Counter = new Counter();
   @Output() preferenceUpdated = new EventEmitter();
 

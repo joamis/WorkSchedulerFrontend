@@ -52,7 +52,7 @@ export class Counter {
 
 export class TimetableComponent implements OnInit, OnChanges {
 
-  constructor(private groupService: GroupService, private preferencesServiec: PreferenceService) {
+  constructor(private groupService: GroupService, private preferencesService: PreferenceService) {
   }
 
   @Input() student: Student;
@@ -78,12 +78,14 @@ export class TimetableComponent implements OnInit, OnChanges {
 
 
   getGroups(): void {
-    forkJoin(this.groupService.getGroups(), this.preferencesServiec.getPreferences(this.student)).subscribe(results => {
+      console.log('1234t45t45ptk45ptk45tp4')
+    forkJoin(this.groupService.getGroups(), this.preferencesService.getPreferences(this.student)).subscribe(results => {
       this.counter = new Counter();
       this.groups = [];
       this.preferencesMap.clear();
       const groups: GroupClass[] = results[0];
       const preferences: Preference[] = results[1];
+      console.log(results[1]);
       console.log(preferences);
       preferences.forEach((preference) => {
         this.preferencesMap.set(preference.nameOfSubject + preference.groupID.toString(), preference);
@@ -106,7 +108,7 @@ export class TimetableComponent implements OnInit, OnChanges {
 
   updatePreferences() {
     const preferences: Array<Preference> = Array.from(this.preferencesMap.values());
-    this.preferencesServiec.postPreferences(preferences.filter((preference) => {
+    this.preferencesService.postPreferences(preferences.filter((preference) => {
       return preference.nameOfSubject !== '';
     }), () => {
       this.reloadGroups();

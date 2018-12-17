@@ -1,6 +1,6 @@
 <div style="margin-top:5%">
   <div class="row">
-    <pre class="labels offset-sm-5 col-sm-2">Counter: </pre><p class="items">{{counter.usedNumberOfPoints}}/{{counter.totalNumberOfPoints}}</p>
+    <pre class="labels offset-sm-5 col-sm-3" style="font-weight: bold">Total number of points:</pre><p class="items">{{counter.usedNumberOfPoints}}/{{counter.totalNumberOfPoints}}</p>
   </div>
   <div class="row">
     <app-group class="col-sm-4" *ngFor="let group of this.groups" [groupWithPref]="group" [counter]="counter" (preferenceUpdated)="updatePreferences()"></app-group>

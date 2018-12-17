@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {GroupService} from '../../services/group.service';
 import {LoggedStudentService} from '../../services/logged-student.service';
 import {Student, SubjectId} from '../../models/Student';
 import {LoginService} from '../../services/login.service';
+import {Admin} from '../../models/Admin';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +17,8 @@ export class HomeComponent implements OnInit {
   timetableView = 'TIMETABLE';
   registrationView = 'REGISTER';
   loginView = 'LOGIN';
-  private loggedStudent: Student = null
+  adminView = 'ADMIN';
+  private loggedStudent: Student = null;
 
   constructor(private loggedStudentService: LoggedStudentService, private loginService: LoginService) { }
   ngOnInit() {
@@ -56,6 +57,10 @@ export class HomeComponent implements OnInit {
     this.currentView = this.loginView;
   }
 
+  goToAdminView(){
+    this.currentView = this.adminView;
+  }
+
   userLoggedIn() {
     this.loadLoggedInStudent()
     this.currentView = this.timetableView;
@@ -73,6 +78,9 @@ export class HomeComponent implements OnInit {
     this.loggedStudentService.deleteSession();
     this.loggedStudent = null
     this.currentView = this.homeView;
-    console.log(this.currentView)
+    console.log(this.currentView);
+  }
+  goBackToAdmin(){
+    this.currentView = this.adminView;
   }
 }

@@ -14,6 +14,7 @@
             <a [hidden]="isUserLoggedIn()" class="btn btn-link"  (click)="goToLoginView()" style="font-size:100%; font-family: Montserrat">Log in</a></li>
           <li>
             <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="showTimetable()" style="font-size:100%; font-family: Montserrat">Show preferences</a>
+            <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="goToAdminView()" style="font-size:100%; font-family: Montserrat">Go To Admin View</a>
             <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="logOut()" style="font-size:100%; font-family: Montserrat">Log out</a>
           </li>
           <li>
@@ -31,5 +32,7 @@
                    [hidden]="currentView!='TIMETABLE' || isScheduleAlreadyCalculated()"></app-timetable>
     <app-assigned-work-schedule [subjectsIds]="getStudentWorkSchedule()"
                                 [hidden]="currentView!='TIMETABLE' || !isScheduleAlreadyCalculated()"></app-assigned-work-schedule>
+
+    <app-admin [hidden]="currentView!='ADMIN'"></app-admin>
   </div>
 </div>

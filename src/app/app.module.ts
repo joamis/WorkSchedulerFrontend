@@ -7,7 +7,7 @@ import { TimetableComponent } from './components/timetable/timetable.component';
 import { GroupComponent } from './components/group/group.component';
 import {GroupService} from './services/group.service';
 import { HttpClientModule} from '@angular/common/http';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DetailedGroupComponent } from './components/detailed-group/detailed-group.component';
 import {PreferenceService} from './services/preference.service';
 import { FormsModule } from '@angular/forms';
@@ -18,6 +18,9 @@ import { LoginComponent } from './components/login/login.component';
 import {LoginService} from './services/login.service';
 import {LoggedStudentService} from './services/logged-student.service';
 import { AssignedWorkScheduleComponent } from './components/assigned-work-schedule/assigned-work-schedule.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { CalculateScheduleComponent } from './components/calculate-schedule/calculate-schedule.component';
+import {CalculateScheduleService} from './services/calculate-schedule.service';
 
 @NgModule({
   declarations: [
@@ -29,7 +32,9 @@ import { AssignedWorkScheduleComponent } from './components/assigned-work-schedu
     ReadyTimetableComponent,
     RegistrationComponent,
     LoginComponent,
-    AssignedWorkScheduleComponent
+    AssignedWorkScheduleComponent,
+    AdminComponent,
+    CalculateScheduleComponent
   ],
   imports: [
     BrowserModule,
@@ -38,8 +43,8 @@ import { AssignedWorkScheduleComponent } from './components/assigned-work-schedu
     NgbModule.forRoot(),
     FormsModule
   ],
-  entryComponents: [DetailedGroupComponent],
-  providers: [GroupService, PreferenceService, ReadytimetableService, LoginService, LoggedStudentService],
+  entryComponents: [DetailedGroupComponent, CalculateScheduleComponent],
+  providers: [GroupService, PreferenceService, ReadytimetableService, LoginService, LoggedStudentService, NgbActiveModal, CalculateScheduleService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
