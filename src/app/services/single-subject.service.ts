@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
-import {preferenceUrl, subjectsUrl} from '../api';
+import {subjectsUrl} from '../api';
 import {HttpClient} from '@angular/common/http';
 import {Subject} from '../models/Subject';
 
@@ -18,5 +18,12 @@ export class SingleSubjectService {
 
   addSubject(subject: Subject): Observable<Subject> {
     return this.http.post<Subject>(subjectsUrl, JSON.stringify(subject));
+  }
+
+  deleteSubject(subject: Subject) {
+    console.log(subject)
+    const url: string = subjectsUrl + '/' + subject._id;
+    console.log(url)
+    this.http.delete<Subject>(url).subscribe( () => {console.log('deleted')})
   }
 }

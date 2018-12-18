@@ -12,6 +12,7 @@ export class SubjectAdditionComponent implements OnInit {
 
   subject = new Subject();
   @Output() backButtonPressed = new EventEmitter();
+  @Output() subjectAdded = new EventEmitter();
 
   constructor(private subjectService: SingleSubjectService) {
   }
@@ -29,6 +30,12 @@ export class SubjectAdditionComponent implements OnInit {
   }
 
   goBack(){
-    this.backButtonPressed.emit()
+    this.backButtonPressed.emit();
+  }
+
+  addSubject(){
+    this.subjectService.addSubject(this.subject).subscribe((result) => {
+      this.subjectAdded.emit();
+    });
   }
 }

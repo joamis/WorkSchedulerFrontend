@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {SingleSubjectService} from '../../services/single-subject.service';
 import {Subject} from '../../models/Subject';
 
@@ -14,19 +14,32 @@ export class SubjectsComponent implements OnInit {
   currentView = this.subjectView;
 
   subjects: Subject[] = [];
-  constructor( private subjectService: SingleSubjectService) { }
+  subject: Subject;
+
+  constructor(private subjectService: SingleSubjectService) {
+  }
 
   ngOnInit() {
     this.getSubjects();
   }
 
   getSubjects(): void {
-  this.subjectService.getSubjects().subscribe(subjects => this.subjects = subjects);
+    this.subjectService.getSubjects().subscribe(subjects => this.subjects = subjects);
   }
-  addSubject(): void{
+
+  goToSubjectsView(): void {
+    this.currentView = this.subjectView;
+  }
+
+  goToSUbjectAdditionView() {
     this.currentView = this.additionView;
   }
-  goToSubjectsView(): void{
-    this.currentView=this.subjectView;
+
+  goToSubjectsViewAndReload() {
+    this.subjectService.getSubjects().subscribe(subjects => {
+        this.subjects = subjects;
+        this.goToSubjectsView();
+      }
+    );
   }
 }
