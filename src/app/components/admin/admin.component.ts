@@ -16,6 +16,7 @@ export class AdminComponent implements OnInit {
   adminView = 'ADMIN';
   usersView = 'USERS';
   studentsView = 'STUDENTS';
+  subjectsView = 'SUBJECTS'
   currentView = this.adminView;
   ngOnInit() {
   }
@@ -29,11 +30,14 @@ export class AdminComponent implements OnInit {
   }
 
   goToUsersView () {
-    console.log('1234566778')
     this.currentView = this.usersView;
   }
 
   goToStudentsView(){
     this.currentView = this.studentsView;
+  }
+
+  goToSubjectsView(){
+    this.currentView = this.subjectsView;
   }
 }

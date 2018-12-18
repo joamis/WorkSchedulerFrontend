@@ -25,6 +25,8 @@ import { UsersComponent } from './components/users/users.component';
 import { SingleUserComponent } from './components/single-user/single-user.component';
 import { StudentsComponent } from './components/students/students.component';
 import { SingleStudentComponent } from './components/single-student/single-student.component';
+import { SingleSubjectComponent } from './components/single-subject/single-subject.component';
+import { SubjectsComponent } from './components/subjects/subjects.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { SingleStudentComponent } from './components/single-student/single-stude
     UsersComponent,
     SingleUserComponent,
     StudentsComponent,
-    SingleStudentComponent
+    SingleStudentComponent,
+    SingleSubjectComponent,
+    SubjectsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,4 @@
 import {Preference} from './Preference';
-import {GroupClass} from './GroupClass';
 
 export class SubjectId
 {

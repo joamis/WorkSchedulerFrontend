@@ -1,7 +1,7 @@
 <div class="container" [hidden]="currentView!=this.adminView">
   <div class="information">
     <div class="row">
-      <button class="btn btn-info">Subjects</button>
+      <button class="btn btn-info" (click)="goToSubjectsView()">Subjects</button>
     </div>
   </div>
   <div class="information">
@@ -31,5 +31,9 @@
 
 <div [hidden]="currentView!=this.studentsView">
   <app-students></app-students>
+</div>
+
+<div [hidden]="currentView!=this.subjectsView">
+  <app-subjects></app-subjects>
 </div>
 

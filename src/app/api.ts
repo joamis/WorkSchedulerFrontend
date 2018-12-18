@@ -7,3 +7,4 @@ export const userUrl = server + '/auth';
 export const usersUrl = server + '/users'
 export const calculateScheduleUrl = server + '/scheduleWork';
 export const studentsUrl = server + '/students'
+export const subjectsUrl = server + '/subjects'
