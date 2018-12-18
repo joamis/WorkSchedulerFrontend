@@ -18,7 +18,6 @@ export class UsersComponent implements OnInit {
   }
 
   getUsers(): void {
-    console.log('12345678')
       this.singleUserService.getUsers() .subscribe(users => this.users = users);;
   }
 

@@ -23,6 +23,8 @@ import { CalculateScheduleComponent } from './components/calculate-schedule/calc
 import {CalculateScheduleService} from './services/calculate-schedule.service';
 import { UsersComponent } from './components/users/users.component';
 import { SingleUserComponent } from './components/single-user/single-user.component';
+import { StudentsComponent } from './components/students/students.component';
+import { SingleStudentComponent } from './components/single-student/single-student.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import { SingleUserComponent } from './components/single-user/single-user.compon
     AdminComponent,
     CalculateScheduleComponent,
     UsersComponent,
-    SingleUserComponent
+    SingleUserComponent,
+    StudentsComponent,
+    SingleStudentComponent
   ],
   imports: [
     BrowserModule,

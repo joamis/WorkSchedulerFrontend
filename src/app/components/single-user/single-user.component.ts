@@ -11,7 +11,6 @@ export class SingleUserComponent implements OnInit {
   @Input() user: User = new User();
 
   constructor() { }
-  user = new User();
 
   ngOnInit() {
   }

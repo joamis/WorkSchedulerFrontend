@@ -6,7 +6,7 @@
   </div>
   <div class="information">
   <div class="row">
-    <button class="btn btn-info">Students</button>
+    <button class="btn btn-info" (click)="goToStudentsView()">Students</button>
   </div>
   </div>
   <div class="information">
@@ -27,5 +27,9 @@
 
 <div [hidden]="currentView!=this.usersView">
   <app-users></app-users>
+</div>
+
+<div [hidden]="currentView!=this.studentsView">
+  <app-students></app-students>
 </div>
 
