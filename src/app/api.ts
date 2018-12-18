@@ -6,5 +6,7 @@ export const registrationUrl = server + '/register';
 export const userUrl = server + '/auth';
 export const usersUrl = server + '/users'
 export const calculateScheduleUrl = server + '/scheduleWork';
+export const isScheduleCalculatedUrl = server + '/isScheduleCalculated';
 export const studentsUrl = server + '/students'
 export const subjectsUrl = server + '/subjects'
+export const resetCalculatedScheduleUrl = server + '/resetScheduleWork'

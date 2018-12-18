@@ -9,6 +9,10 @@ import {Subject} from '../../models/Subject';
 })
 export class SubjectsComponent implements OnInit {
 
+  additionView = 'ADDITION';
+  subjectView = 'SUBJECTS';
+  currentView = this.subjectView;
+
   subjects: Subject[] = [];
   constructor( private subjectService: SingleSubjectService) { }
 
@@ -19,5 +23,10 @@ export class SubjectsComponent implements OnInit {
   getSubjects(): void {
   this.subjectService.getSubjects().subscribe(subjects => this.subjects = subjects);
   }
-
+  addSubject(): void{
+    this.currentView = this.additionView;
+  }
+  goToSubjectsView(): void{
+    this.currentView=this.subjectView;
+  }
 }

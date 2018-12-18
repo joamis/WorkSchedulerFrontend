@@ -6,12 +6,17 @@
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
-    <div class="modal-body">
-     <p>Are you sure to calculate schedule ?</p>
-    <div class="modal-footer">
-      <button class="btn btn-success" (click) = "calculateSchedule()">Yes, calculate</button>
-      <button class="btn btn-danger" (click) = "goBack()">Cancel</button>
+    <div [hidden]="isScheduleCalculated===null">
+      <div [hidden]="isScheduleCalculated" class="modal-body">
+        <p>Are you sure to calculate schedule ?</p>
+        <div class="modal-footer">
+          <button class="btn btn-success" (click)="calculateSchedule()">Yes, calculate</button>
+        </div>
+      </div>
+      <div [hidden]="!isScheduleCalculated" class="modal-body">
+        <p>Schedule is already calculated.</p>
+        <button class="btn btn-danger" (click)="resetCalculateSchedule()">Reset</button>
+      </div>
     </div>
   </div>
-</div>
 </div>

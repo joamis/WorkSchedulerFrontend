@@ -6,6 +6,7 @@
 
 .container .row {
   font-family: Montserrat;
+  display: inline-block;
 
 }
 .container .row .labels {
@@ -15,5 +16,10 @@
 
 .information{
   padding: 2%;
-  display: block;
+  display: inline-block;
+}
+
+.container .buttons {
+  display: inline;
+
 }

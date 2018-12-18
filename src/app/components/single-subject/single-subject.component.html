@@ -3,10 +3,12 @@
     <div class="row">
       <pre class="labels">Name of subject: </pre><p class="items"> {{subject.nameOfSubject}}</p>
     </div>
-    <div class="row">
-      <pre class="labels">Groups: </pre><p class="items">{{subject.groups}}</p>
+    <div class="row" *ngFor="let group of this.subject.groups">
+      <pre class="labels">Group ID: </pre><p class="items">{{group.groupID}}</p>
+      <pre class="labels">Number of people: </pre><p class="items">{{group.numberOfPeople}}</p>
+      <pre class="labels">Date: </pre><p class="items">{{group.date}}</p>
     </div>
-    <div class="row">
+    <div class="buttons">
       <button class="btn btn-info">Update subject</button><pre>  </pre>
       <button class="btn btn-info">Delete subject</button>
     </div>

@@ -1,6 +1,6 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {NgbActiveModal} from '@ng-bootstrap/ng-bootstrap';
-import { CalculateScheduleService} from '../../services/calculate-schedule.service';
+import {CalculateScheduleService} from '../../services/calculate-schedule.service';
 
 @Component({
   selector: 'app-calculate-schedule',
@@ -9,18 +9,42 @@ import { CalculateScheduleService} from '../../services/calculate-schedule.servi
 })
 export class CalculateScheduleComponent implements OnInit {
 
-  constructor(public activeModal: NgbActiveModal, private calculateScheduleService: CalculateScheduleService) { }
-
-  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
-  ngOnInit() {
+  constructor(public activeModal: NgbActiveModal, private calculateScheduleService: CalculateScheduleService) {
   }
 
-  goBack(){
+  isScheduleCalculated = null;
+
+  @Output() notify: EventEmitter<string> = new EventEmitter<string>();
+
+  ngOnInit() {
+    this.updateScheduleCalculated();
+  }
+
+  goBack() {
     this.notify.emit('Back to admin view');
   }
 
-  /*calculateSchedule(){
-    this.calculateScheduleService.calculateSchedule();
-  }*/
+  calculateSchedule() {
+    this.calculateScheduleService.calculateSchedule().subscribe(() => {
+      this.updateScheduleCalculated();
+    });
+  }
 
+  updateScheduleCalculated() {
+    this.calculateScheduleService.isScheduleCalculated().subscribe((result) => {
+      if (result) {
+        this.isScheduleCalculated = result;
+      } else {
+        this.isScheduleCalculated = false;
+      }
+      console.log(this.isScheduleCalculated);
+    });
+  }
+
+  resetCalculateSchedule() {
+    this.calculateScheduleService.resetCalculateSchedule().subscribe(() => {
+      this.updateScheduleCalculated();
+    });
+
+  }
 }

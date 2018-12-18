@@ -1,0 +1,33 @@
+<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+<div class="login-form">
+  <form #subjectAddition="ngForm" (ngSubmit)="addSubject()">
+
+    <div class="form-group">
+      <label>Name of subject:</label>
+      <input type="text" class="form-control" id="nameOfSubject" name="nameOfSubject" required="required"
+             [(ngModel)]="subject.nameOfSubject">
+    </div>
+    <button type="button" (click)="addGroup()">Add group</button>
+    <div *ngFor="let singleGroup of subject.groups; index as i" class="single_group">
+      <label>Group id:</label>
+      <input type="number" class="form-control" id="groupID" name="groupID" required="required"
+                   [(ngModel)]="subject.groups[i].groupID">
+      <label>Date:</label>
+      <input type="number" class="form-control" id="date" name="date" required="required"
+             [(ngModel)]="subject.groups[i].date">
+      <label>Number of people:</label>
+      <input type="number" class="form-control" id="numberOfPeople" name="numberOfPeople" required="required"
+             [(ngModel)]="subject.groups[i].numberOfPeople">
+      <label></label>
+      <button (click)="deleteGroup(index)"> Remove group</button>
+    </div>
+
+
+    <div class="form-group">
+      <button type="submit" class="btn btn-success" style="float:right;">Add Subject</button>
+      <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+    </div>
+  </form>
+</div>
+
+

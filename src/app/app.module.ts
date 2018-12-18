@@ -27,6 +27,7 @@ import { StudentsComponent } from './components/students/students.component';
 import { SingleStudentComponent } from './components/single-student/single-student.component';
 import { SingleSubjectComponent } from './components/single-subject/single-subject.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
+import { SubjectAdditionComponent } from './components/subject-addition/subject-addition.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { SubjectsComponent } from './components/subjects/subjects.component';
     StudentsComponent,
     SingleStudentComponent,
     SingleSubjectComponent,
-    SubjectsComponent
+    SubjectsComponent,
+    SubjectAdditionComponent
   ],
   imports: [
     BrowserModule,

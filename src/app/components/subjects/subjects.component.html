@@ -1,5 +1,8 @@
-<button class="btn btn-info" style=" margin-top: 5%">Add subject</button>
+<div [hidden]="currentView!=subjectView">
+  <button class="btn btn-info" style=" margin-top: 5%" (click)="addSubject()">Add subject</button>
+  <app-single-subject *ngFor="let subject of this.subjects" [subject]="subject"></app-single-subject>
+</div>
 
-<div>
-  <app-single-subject class="col-sm-4" *ngFor="let subject of this.subjects" [subject]="subject"></app-single-subject>
+<div [hidden]="currentView!=additionView">
+  <app-subject-addition (backButtonPressed)="goToSubjectsView()"></app-subject-addition>
 </div>

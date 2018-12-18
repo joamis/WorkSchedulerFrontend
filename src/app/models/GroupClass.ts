@@ -5,3 +5,11 @@ export class GroupClass {
     public numberOfPeople: number = 0,
     public groupID: number = 0) {}
 }
+
+export class Group {
+  constructor(
+    public groupID: number = 0,
+    public date: Date = new Date(),
+    public numberOfPeople: number = 0
+    ) {}
+}
