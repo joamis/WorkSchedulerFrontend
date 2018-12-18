@@ -21,6 +21,8 @@ import { AssignedWorkScheduleComponent } from './components/assigned-work-schedu
 import { AdminComponent } from './components/admin/admin.component';
 import { CalculateScheduleComponent } from './components/calculate-schedule/calculate-schedule.component';
 import {CalculateScheduleService} from './services/calculate-schedule.service';
+import { UsersComponent } from './components/users/users.component';
+import { SingleUserComponent } from './components/single-user/single-user.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +36,9 @@ import {CalculateScheduleService} from './services/calculate-schedule.service';
     LoginComponent,
     AssignedWorkScheduleComponent,
     AdminComponent,
-    CalculateScheduleComponent
+    CalculateScheduleComponent,
+    UsersComponent,
+    SingleUserComponent
   ],
   imports: [
     BrowserModule,

@@ -10,11 +10,12 @@ import {CalculateScheduleComponent} from '../calculate-schedule/calculate-schedu
 })
 export class AdminComponent implements OnInit {
 
-  constructor(private modalService: NgbModal) { }
 
+  constructor(private modalService: NgbModal) { }
   calculateView = 'CALCULATE';
   adminView = 'ADMIN';
-  currentView = '';
+  usersView = 'USERS';
+  currentView = this.adminView;
   ngOnInit() {
   }
 
@@ -22,7 +23,12 @@ export class AdminComponent implements OnInit {
     this.modalService.open(CalculateScheduleComponent);
   }
 
-  goToAdminView ($event: string) {
+  goToAdminView () {
     this.currentView = this.adminView;
+  }
+
+  goToUsersView () {
+    console.log('1234566778')
+    this.currentView = this.usersView;
   }
 }

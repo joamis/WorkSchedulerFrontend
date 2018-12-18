@@ -19,8 +19,8 @@ export class CalculateScheduleComponent implements OnInit {
     this.notify.emit('Back to admin view');
   }
 
-  calculateSchedule(){
+  /*calculateSchedule(){
     this.calculateScheduleService.calculateSchedule();
-  }
+  }*/
 
 }

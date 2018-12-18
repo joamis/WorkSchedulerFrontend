@@ -9,7 +9,7 @@ export class CalculateScheduleService {
 
   constructor(private http: HttpClient) {}
 
-  calculateSchedule(): void {
-    });
+  /*calculateSchedule(): void {
+    });*/
 
 }
