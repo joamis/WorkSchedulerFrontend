@@ -1,5 +1,8 @@
-<button class="btn btn-info" style=" margin-top: 5%">Add student</button>
+<div [hidden]="currentView!=subjectView">
+  <button class="btn btn-info" style=" margin-top: 5%">Add student</button>
+  <button class="btn btn-secondary" style=" margin-top: 5%" (click)="goBack()">Back</button>
+  <app-single-student *ngFor="let student of this.students" [student]="student"></app-single-student>
+</div>
+<div [hidden]="currentView!=additionView">
 
-<div>
-  <app-single-student class="col-sm-4" *ngFor="let student of this.students" [student]="student"></app-single-student>
 </div>

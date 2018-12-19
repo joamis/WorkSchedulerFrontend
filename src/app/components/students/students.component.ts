@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Student} from '../../models/Student';
 import {SingleStudentService} from '../../services/single-student.service';
 
@@ -9,6 +9,7 @@ import {SingleStudentService} from '../../services/single-student.service';
 })
 export class StudentsComponent implements OnInit {
 
+  @Output() backButtonPressed = new EventEmitter();
   students: Student[] = [];
 
   constructor(private singleStudentService: SingleStudentService) { }
@@ -21,5 +22,7 @@ export class StudentsComponent implements OnInit {
     this.singleStudentService.getStudents() .subscribe(students => this.students = students);;
   }
 
-
+  goBack(){
+    this.backButtonPressed.emit();
+  }
 }

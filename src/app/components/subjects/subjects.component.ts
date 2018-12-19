@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SingleSubjectService} from '../../services/single-subject.service';
 import {Subject} from '../../models/Subject';
 
@@ -9,10 +9,10 @@ import {Subject} from '../../models/Subject';
 })
 export class SubjectsComponent implements OnInit {
 
+  @Output() backButtonPressed = new EventEmitter();
   additionView = 'ADDITION';
   subjectView = 'SUBJECTS';
   currentView = this.subjectView;
-
   subjects: Subject[] = [];
   subject: Subject;
 
@@ -41,5 +41,9 @@ export class SubjectsComponent implements OnInit {
         this.goToSubjectsView();
       }
     );
+  }
+
+  goBack(){
+    this.backButtonPressed.emit();
   }
 }

@@ -26,14 +26,14 @@
 </div>
 
 <div [hidden]="currentView!=this.usersView">
-  <app-users></app-users>
+  <app-users (backButtonPressed)="goToAdminView()"></app-users>
 </div>
 
 <div [hidden]="currentView!=this.studentsView">
-  <app-students></app-students>
+  <app-students (backButtonPressed)="goToAdminView()"></app-students>
 </div>
 
 <div [hidden]="currentView!=this.subjectsView">
-  <app-subjects></app-subjects>
+  <app-subjects (backButtonPressed)="goToAdminView()"></app-subjects>
 </div>
 
