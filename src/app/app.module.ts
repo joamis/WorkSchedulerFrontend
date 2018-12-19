@@ -11,8 +11,6 @@ import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DetailedGroupComponent } from './components/detailed-group/detailed-group.component';
 import {PreferenceService} from './services/preference.service';
 import { FormsModule } from '@angular/forms';
-import { ReadyTimetableComponent } from './components/ready-timetable/ready-timetable.component';
-import {ReadytimetableService} from './services/readytimetable.service';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { LoginComponent } from './components/login/login.component';
 import {LoginService} from './services/login.service';
@@ -28,6 +26,7 @@ import { SingleStudentComponent } from './components/single-student/single-stude
 import { SingleSubjectComponent } from './components/single-subject/single-subject.component';
 import { SubjectsComponent } from './components/subjects/subjects.component';
 import { SubjectAdditionComponent } from './components/subject-addition/subject-addition.component';
+import {ReadyTimetableComponent} from './components/ready-timetable/ready-timetable.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +35,6 @@ import { SubjectAdditionComponent } from './components/subject-addition/subject-
     TimetableComponent,
     GroupComponent,
     DetailedGroupComponent,
-    ReadyTimetableComponent,
     RegistrationComponent,
     LoginComponent,
     AssignedWorkScheduleComponent,
@@ -48,6 +46,7 @@ import { SubjectAdditionComponent } from './components/subject-addition/subject-
     SingleStudentComponent,
     SingleSubjectComponent,
     SubjectsComponent,
+    ReadyTimetableComponent,
     SubjectAdditionComponent
   ],
   imports: [
@@ -58,7 +57,7 @@ import { SubjectAdditionComponent } from './components/subject-addition/subject-
     FormsModule
   ],
   entryComponents: [DetailedGroupComponent, CalculateScheduleComponent],
-  providers: [GroupService, PreferenceService, ReadytimetableService, LoginService, LoggedStudentService, NgbActiveModal, CalculateScheduleService ],
+  providers: [GroupService, PreferenceService, LoginService, LoggedStudentService, NgbActiveModal, CalculateScheduleService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

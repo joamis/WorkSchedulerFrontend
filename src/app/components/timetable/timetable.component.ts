@@ -5,7 +5,6 @@ import {forkJoin} from 'rxjs';
 import {GroupWithPreference} from '../../models/GroupWithPreference';
 import {Preference} from '../../models/Preference';
 import {GroupClass} from '../../models/GroupClass';
-import {ReadytimetableService} from '../../services/readytimetable.service';
 import {LoggedStudentService} from '../../services/logged-student.service';
 import {Student, SubjectId} from '../../models/Student';
 

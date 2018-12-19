@@ -37,7 +37,7 @@ export class HomeComponent implements OnInit {
     if (!this.loggedStudent) {
       return [];
     } else {
-      return this.loggedStudent.subjectsIds
+      return this.loggedStudent.subjectsIds;
     }
   }
 

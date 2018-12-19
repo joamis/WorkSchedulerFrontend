@@ -1,6 +1,6 @@
 <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
   <div class="login-form">
-    <form #loginUser="ngForm" (ngSubmit)="postUser()">
+    <form #loginUser="ngForm" (ngSubmit)="postCorrectUser()">
 
       <div class="form-group">
         <input type="text" class="form-control" id="login" name="login" placeholder="Username" required="required"
@@ -14,6 +14,10 @@
       <div class="form-group">
         <button type="submit" class="btn btn-info" style="float:right;">Log in</button>
         <button type="button" class="btn btn-secondary" (click)=goHome()>Back</button>
+      </div>
+      <div>
+        <input type="radio" [(ngModel)]="this.loginProfile"  name = "student" value="student">Student
+        <input type="radio" [(ngModel)]="this.loginProfile"  name = "admin" value="admin">Admin
       </div>
     </form>
   </div>

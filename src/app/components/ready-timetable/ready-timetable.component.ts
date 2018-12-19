@@ -1,6 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ReadytimetableService} from '../../services/readytimetable.service';
-import {GroupClass} from '../../models/GroupClass';
 import {SubjectId} from '../../models/Student';
 
 @Component({

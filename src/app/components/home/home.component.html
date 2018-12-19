@@ -11,10 +11,9 @@
       <div class="offset-md-3 col-md-6 float-right ">
         <ul class="navbar float-right">
           <li>
-            <a [hidden]="isUserLoggedIn()" class="btn btn-link"  (click)="goToLoginView()" style="font-size:100%; font-family: Montserrat">Log in</a></li>
+            <a [hidden]="isUserLoggedIn()" class="btn btn-link"  (click)="goToLoginView()" style="font-size:100%; font-family: Montserrat">Log in </a></li>
           <li>
             <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="showTimetable()" style="font-size:100%; font-family: Montserrat">Show preferences</a>
-            <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="goToAdminView()" style="font-size:100%; font-family: Montserrat">Go To Admin View</a>
             <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="logOut()" style="font-size:100%; font-family: Montserrat">Log out</a>
           </li>
           <li>
@@ -27,7 +26,7 @@
 <div class="container-fluid row">
   <div class="offset-md-3 offset-sm-0 col-md-6 col-sm-12 main-content">
     <app-registration [hidden]="currentView!='REGISTER'" (backButtonPressed)="goHome($event)"></app-registration>
-    <app-login [hidden]="currentView!='LOGIN'" (userLogedIn)="userLoggedIn($event)"></app-login>
+    <app-login [hidden]="currentView!='LOGIN'" (adminLogedIn)="goToAdminView()" (userLogedIn)="userLoggedIn($event)"></app-login>
     <app-timetable [student]="loggedStudent"
                    [hidden]="currentView!='TIMETABLE' || isScheduleAlreadyCalculated()"></app-timetable>
     <app-assigned-work-schedule [subjectsIds]="getStudentWorkSchedule()"
