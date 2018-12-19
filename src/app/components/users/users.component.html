@@ -1,5 +1,9 @@
-<button class="btn btn-info" style=" margin-top: 5%">Add user</button>
+<div [hidden]="currentView!=usersView">
+  <button class="btn btn-info" style=" margin-top: 5%" (click)="goToUserAdditionView()">Add user</button>
+  <button class="btn btn-secondary" style=" margin-top: 5%" (click)="goBack()">Back</button>
+  <app-single-user *ngFor="let user of this.users" [user]="user"></app-single-user>
+</div>
 
-<div>
-  <app-single-user class="col-sm-4" *ngFor="let user of this.users" [user]="user"></app-single-user>
+<div [hidden]="currentView!=additionView">
+  <app-user-addition (backButtonPressed)="goToUsersView()" (userAdded)="goToUsersViewAndReload()"></app-user-addition>
 </div>

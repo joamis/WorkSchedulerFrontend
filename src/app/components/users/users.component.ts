@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {SingleUserService} from '../../services/single-user.service';
 import {User} from '../../models/User';
 
@@ -9,7 +9,12 @@ import {User} from '../../models/User';
 })
 export class UsersComponent implements OnInit {
 
+  @Output() backButtonPressed = new EventEmitter();
   users: User[] = [];
+  additionView = 'ADDITION';
+  usersView = 'USERS';
+  currentView = this.usersView;
+  user: User;
 
   constructor(private singleUserService: SingleUserService) { }
 
@@ -19,6 +24,26 @@ export class UsersComponent implements OnInit {
 
   getUsers(): void {
       this.singleUserService.getUsers() .subscribe(users => this.users = users);
+  }
+
+  goToUserAdditionView(){
+    this.currentView = this.additionView;
+  }
+
+  goToUsersView(): void {
+    this.currentView = this.usersView;
+  }
+
+  goToUsersViewAndReload() {
+    console.log('1234567')
+    this.singleUserService.getUsers().subscribe(users => {
+        this.users = users;
+        this.goToUsersView();
+      }
+    );
+  }
+  goBack() {
+    this.backButtonPressed.emit();
   }
 
 }

@@ -28,6 +28,7 @@ import { SubjectsComponent } from './components/subjects/subjects.component';
 import { SubjectAdditionComponent } from './components/subject-addition/subject-addition.component';
 import {ReadyTimetableComponent} from './components/ready-timetable/ready-timetable.component';
 import { StudentAdditionComponent } from './components/student-addition/student-addition.component';
+import { UserAdditionComponent } from './components/user-addition/user-addition.component';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,8 @@ import { StudentAdditionComponent } from './components/student-addition/student-
     SubjectsComponent,
     ReadyTimetableComponent,
     SubjectAdditionComponent,
-    StudentAdditionComponent
+    StudentAdditionComponent,
+    UserAdditionComponent
   ],
   imports: [
     BrowserModule,

@@ -12,7 +12,11 @@ export class SingleUserService {
   constructor( private http: HttpClient) { }
 
   getUsers(): Observable<User[]> {
-    console.log('hjkl')
     return this.http.get<User[]>(usersUrl);
   }
+
+  addUser(user: User): Observable<User> {
+    return this.http.post<User>(usersUrl, JSON.stringify(user));
+  }
+
 }
