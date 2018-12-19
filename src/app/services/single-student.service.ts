@@ -16,4 +16,13 @@ export class SingleStudentService {
   getStudents(): Observable<Student[]> {
     return this.http.get<Student[]>(studentsUrl);
   }
+
+  addStudent(student: Student): Observable<Student>{
+    return this.http.post<Student>(studentsUrl, JSON.stringify(student));
+  }
+
+  deleteStudent(student: Student) {
+    const url: string = studentsUrl + '/' + student._id;
+    this.http.delete<Student>(url).subscribe( () => {console.log('deleted')});
+  }
 }
