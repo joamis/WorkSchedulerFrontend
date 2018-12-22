@@ -14,7 +14,8 @@ export class SubjectsComponent implements OnInit {
   subjectView = 'SUBJECTS';
   currentView = this.subjectView;
   subjects: Subject[] = [];
-  subject: Subject;
+  addUpdateSubject: Subject = new Subject();
+  updateOption = false
 
   constructor(private subjectService: SingleSubjectService) {
   }
@@ -39,11 +40,23 @@ export class SubjectsComponent implements OnInit {
     this.subjectService.getSubjects().subscribe(subjects => {
         this.subjects = subjects;
         this.goToSubjectsView();
+        this.addUpdateSubject = new Subject();
+        this.updateOption = false
       }
     );
   }
 
   goBack(){
     this.backButtonPressed.emit();
+  }
+
+  updateEmittedSubject(subject: Subject) {
+    this.addUpdateSubject = subject;
+    this.updateOption = true
+    this.goToSUbjectAdditionView();
+  }
+
+  refreshSubjects() {
+    this.getSubjects()
   }
 }

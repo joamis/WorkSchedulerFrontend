@@ -10,9 +10,11 @@ import {Group, GroupClass} from '../../models/GroupClass';
 })
 export class SubjectAdditionComponent implements OnInit {
 
-  subject = new Subject();
+  @Input() subject;
+  @Input() updateOption;
   @Output() backButtonPressed = new EventEmitter();
   @Output() subjectAdded = new EventEmitter();
+  time =  {hour: 0, minute: 0};
 
   constructor(private subjectService: SingleSubjectService) {
   }
@@ -25,6 +27,7 @@ export class SubjectAdditionComponent implements OnInit {
   }
 
   deleteGroup(index: number) {
+    console.log('deleting' + index)
     this.subject.groups.splice( index, 1 );
     console.log(this.subject.groups)
   }
@@ -33,9 +36,18 @@ export class SubjectAdditionComponent implements OnInit {
     this.backButtonPressed.emit();
   }
 
-  addSubject(){
-    this.subjectService.addSubject(this.subject).subscribe((result) => {
+  addSubject() {
+    this.subjectService.addSubject(this.subject).subscribe(() => {
       this.subjectAdded.emit();
     });
+  }
+  updateSubject() {
+      this.subjectService.updateSubject(this.subject).subscribe(() => {
+        this.subjectAdded.emit();
+      });
+  }
+
+  propagetaAsMinutes(newVaue, index: number) {
+    this.subject.groups[index].startTimeMinSinceMid = newVaue.hour * 60 + newVaue.minute;
   }
 }

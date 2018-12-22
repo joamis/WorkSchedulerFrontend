@@ -1,16 +1,18 @@
-<div class="container">
-  <div class="information">
+<div class="container-fluid all-subjects">
+    <div>
+      <p >Name of subject:  {{subject.nameOfSubject}}</p>
+    </div>
+    <div *ngFor="let group of this.subject.groups">
+      <div class="container-fluid single-group">
+        <p>Group ID:   {{group.groupID}}</p>
+        <p>Number of people:   {{group.numberOfPeople}}</p>
+        <p>Date:         {{group.dayOfWeek}}</p>
+        <p>Class start time:   {{group.startTimeMinSinceMid}}</p>
+        <p>Class duration:   {{group.duration}}</p>
+      </div>
+    </div>
     <div class="row">
-      <pre class="labels">Name of subject: </pre><p class="items"> {{subject.nameOfSubject}}</p>
+      <button class="btn btn-info col-2" (click)="updateSubject()">Update subject</button>
+      <button class="btn btn-info offset-8 col-2" (click)="deleteSubject()">Delete subject</button>
     </div>
-    <div class="row" *ngFor="let group of this.subject.groups">
-      <pre class="labels">Group ID: </pre><p class="items">{{group.groupID}}</p>
-      <pre class="labels">Number of people: </pre><p class="items">{{group.numberOfPeople}}</p>
-      <pre class="labels">Date: </pre><p class="items">{{group.date}}</p>
-    </div>
-    <div class="buttons">
-      <button class="btn btn-info">Update subject</button><pre>  </pre>
-      <button class="btn btn-info" (click) = "deleteSubject()">Delete subject</button>
-    </div>
-  </div>
 </div>

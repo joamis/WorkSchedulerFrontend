@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {Observable} from 'rxjs';
 import {subjectsUrl} from '../api';
-import {HttpClient} from '@angular/common/http';
+import {HttpClient, HttpHeaders} from '@angular/common/http';
 import {Subject} from '../models/Subject';
 
 
@@ -9,6 +9,11 @@ import {Subject} from '../models/Subject';
   providedIn: 'root'
 })
 export class SingleSubjectService {
+  httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json'
+    })
+  };
 
   constructor(private http: HttpClient) { }
 
@@ -21,9 +26,13 @@ export class SingleSubjectService {
   }
 
   deleteSubject(subject: Subject) {
-    console.log(subject)
     const url: string = subjectsUrl + '/' + subject._id;
-    console.log(url)
     this.http.delete<Subject>(url).subscribe( () => {console.log('deleted')})
+  }
+
+  updateSubject(subject: Subject) {
+    const url: string = subjectsUrl + '/' + subject._id;
+    console.log(subject)
+    return this.http.put<Subject>(url, subject);
   }
 }
