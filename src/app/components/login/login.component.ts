@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   @Output() adminLogedIn: EventEmitter<void> = new EventEmitter<void>();
 
   user: User = new User();
-  loginProfile: String = '';
+  loginProfile: String = 'student';
 
   ngOnInit() {
   }
@@ -27,16 +27,16 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  postAdmin(){
+  postAdmin() {
     this.loginService.loginAdmin(this.user, () => {
       this.adminLogedIn.emit();
     });
   }
 
   postCorrectUser() {
-    if (this.loginProfile === 'student'){
+    if (this.loginProfile === 'student') {
       this.postStudent();
-    } else if (this.loginProfile === 'admin'){
+    } else if (this.loginProfile === 'admin') {
       this.postAdmin();
     }
   }

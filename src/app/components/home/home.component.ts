@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {LoggedStudentService} from '../../services/logged-student.service';
 import {Student, SubjectId} from '../../models/Student';
 import {LoginService} from '../../services/login.service';
@@ -14,15 +14,27 @@ export class HomeComponent implements OnInit {
   homeView = 'HOME';
   title = 'WorkScheduler';
   currentView = 'HOME';
+  preferencesView = 'PREFERENCES';
   timetableView = 'TIMETABLE';
   registrationView = 'REGISTER';
   loginView = 'LOGIN';
   adminView = 'ADMIN';
   private loggedStudent: Student = null;
 
-  constructor(private loggedStudentService: LoggedStudentService, private loginService: LoginService) { }
+  constructor(private loggedStudentService: LoggedStudentService, private loginService: LoginService) {
+  }
+
   ngOnInit() {
     this.loadLoggedInStudent();
+    if (this.isAdminLoggedIn()) {
+      this.goToAdminView();
+    } else if (this.isUserLoggedIn()) {
+      this. goTononAdminUserDefaultView();
+    }
+  }
+
+  isAdminLoggedIn(): boolean {
+    return this.loggedStudentService.isAdmin();
   }
 
   loadLoggedInStudent() {
@@ -41,6 +53,10 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  goToPreferencesView() {
+    this.currentView = this.preferencesView;
+  }
+
   goToTimetableView() {
     this.currentView = this.timetableView;
   }
@@ -53,21 +69,25 @@ export class HomeComponent implements OnInit {
     this.currentView = this.homeView;
   }
 
-  goToLoginView(){
+  goToLoginView() {
     this.currentView = this.loginView;
   }
 
-  goToAdminView(){
+  goToAdminView() {
     this.currentView = this.adminView;
   }
 
-  userLoggedIn() {
-    this.loadLoggedInStudent()
-    this.currentView = this.timetableView;
+  goTononAdminUserDefaultView(): void {
+    if (this.isScheduleAlreadyCalculated()) {
+      this.goToTimetableView();
+    } else {
+      this.goToPreferencesView();
+    }
   }
 
-  showTimetable() {
-    this.currentView = this.timetableView;
+  userLoggedIn() {
+    this.loadLoggedInStudent();
+    this.goTononAdminUserDefaultView();
   }
 
   isUserLoggedIn() {
@@ -76,11 +96,12 @@ export class HomeComponent implements OnInit {
 
   logOut() {
     this.loggedStudentService.deleteSession();
-    this.loggedStudent = null
+    this.loggedStudent = null;
     this.currentView = this.homeView;
     console.log(this.currentView);
   }
-  goBackToAdmin(){
+
+  goBackToAdmin() {
     this.currentView = this.adminView;
   }
 }

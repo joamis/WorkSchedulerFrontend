@@ -13,8 +13,9 @@
           <li>
             <a [hidden]="isUserLoggedIn()" class="btn btn-link"  (click)="goToLoginView()" style="font-size:100%; font-family: Montserrat">Log in </a></li>
           <li>
-            <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="showTimetable()" style="font-size:100%; font-family: Montserrat">Show preferences</a>
-            <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="logOut()" style="font-size:100%; font-family: Montserrat">Log out</a>
+            <a [hidden]="!isUserLoggedIn() || isAdminLoggedIn() || !isScheduleAlreadyCalculated()" class="btn btn-link"  (click)="goToPreferencesView()" style="font-size:100%; font-family: Montserrat">Show preferences</a>
+            <a [hidden]="!isUserLoggedIn() || isAdminLoggedIn() || !isScheduleAlreadyCalculated()" class="btn btn-link"  (click)="goToTimetableView()" style="font-size:100%; font-family: Montserrat">Show timetable</a>
+            <a [hidden]="!isUserLoggedIn()" class="btn btn-link"  (click)="logOut()" style="font-size:100%; font-family: Montserrat">[{{this.loggedStudent ? this.loggedStudent.name : ''}}] Log out</a>
           </li>
           <li>
             <a [hidden]="isUserLoggedIn()" class="btn btn-link"  (click)="goToRegistrationView()" style="font-size:100%; font-family: Montserrat">Sign in</a>
@@ -28,9 +29,9 @@
     <app-registration [hidden]="currentView!='REGISTER'" (backButtonPressed)="goHome($event)"></app-registration>
     <app-login [hidden]="currentView!='LOGIN'" (adminLogedIn)="goToAdminView()" (userLogedIn)="userLoggedIn($event)"></app-login>
     <app-timetable [student]="loggedStudent"
-                   [hidden]="currentView!='TIMETABLE' || isScheduleAlreadyCalculated()"></app-timetable>
+                   [hidden]="currentView!=preferencesView"></app-timetable>
     <app-assigned-work-schedule [subjectsIds]="getStudentWorkSchedule()"
-                                [hidden]="currentView!='TIMETABLE' || !isScheduleAlreadyCalculated()"></app-assigned-work-schedule>
+                                [hidden]="currentView!=timetableView || !isScheduleAlreadyCalculated()"></app-assigned-work-schedule>
 
     <app-admin [hidden]="currentView!='ADMIN'"></app-admin>
   </div>

@@ -13,8 +13,11 @@ export class LoggedStudentService {
   }
 
   saveData(token, userFromDb) {
+    this.deleteSession();
     localStorage.setItem(this.AUTH_KEY_ID, token);
-    localStorage.setItem(this.STUDENT_ID, JSON.stringify(userFromDb));
+    if (userFromDb) { // isNotAdmin
+      localStorage.setItem(this.STUDENT_ID, JSON.stringify(userFromDb));
+    }
   }
 
   deleteSession() {
@@ -28,6 +31,13 @@ export class LoggedStudentService {
 
   updateStudent(student: Student) {
     localStorage.setItem(this.STUDENT_ID, JSON.stringify(student));
+  }
+
+  isAdmin(): boolean {
+    if (localStorage.hasOwnProperty(this.AUTH_KEY_ID)) {
+      return !localStorage.hasOwnProperty(this.STUDENT_ID);
+    }
+    return false;
   }
 
   getStudent(): Student {
