@@ -1,8 +1,12 @@
-<div [hidden]="currentView!=subjectView">
-  <button class="btn btn-info" style=" margin-top: 5%" (click)="goToSUbjectAdditionView()">Add subject</button>
-  <button class="btn btn-secondary" style=" margin-top: 5%" (click)="goBack()">Back</button>
-  <app-single-subject (subjectDeleted)="refreshSubjects()" (updateSubjectEvent)="updateEmittedSubject($event)" *ngFor="let subject of this.subjects" [subject]="subject"></app-single-subject>
-</div>
 <div [hidden]="currentView!=additionView">
   <app-subject-addition [updateOption]="this.updateOption" [subject]="this.addUpdateSubject" (backButtonPressed)="goToSubjectsView()" (subjectAdded)="goToSubjectsViewAndReload()"></app-subject-addition>
+</div>
+<div [hidden]="currentView!=subjectView">
+  <app-single-subject (subjectDeleted)="refreshSubjects()" (updateSubjectEvent)="updateEmittedSubject($event)" *ngFor="let subject of this.subjects" [subject]="subject"></app-single-subject>
+  <div class="container-fluid row">
+    <button class="offset-1 col-2 btn btn-secondary float-left" (click)="goBack()">Back</button>
+    <button class="offset-6 col-2 btn btn-info" (click)="goToSUbjectAdditionView()">Add subject</button>
+  </div>
+  <br>
+  <br>
 </div>

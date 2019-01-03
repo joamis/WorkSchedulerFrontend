@@ -1,28 +1,22 @@
-<div class="container" [hidden]="currentView!=this.adminView">
-  <div class="information">
-    <div class="row">
-      <button class="btn btn-info" (click)="goToSubjectsView()">Subjects</button>
-    </div>
-  </div>
-  <div class="information">
-  <div class="row">
+<mat-grid-list [hidden]="currentView!=this.adminView" cols="2" rowHeight="2:1">
+  <mat-grid-tile>
+    <button class="btn btn-info" (click)="goToSubjectsView()">Subjects</button>
+  </mat-grid-tile>
+  <mat-grid-tile>
     <button class="btn btn-info" (click)="goToStudentsView()">Students</button>
-  </div>
-  </div>
-  <div class="information">
-    <div class="row">
-      <button class="btn btn-info" (click)="goToUsersView()">Users</button>
-    </div>
-  </div>
-  <div class="information">
-    <div class="row">
-      <button class="btn btn-info" (click)=open() data-toggle="modal" data-target="#CalculateModal">Calculate Schedule</button>
-    </div>
-  </div>
-</div>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button class="btn btn-info" (click)="goToUsersView()">Users</button>
+  </mat-grid-tile>
+  <mat-grid-tile>
+    <button class="btn btn-info" (click)=open() data-toggle="modal" data-target="#CalculateModal">Calculate Schedule!
+    </button>
+  </mat-grid-tile>
+</mat-grid-list>
+
 
 <div [hidden]="currentView!=this.calculateView">
-  <app-calculate-schedule (notify)="goToAdminView($event)" ></app-calculate-schedule>
+  <app-calculate-schedule (notify)="goToAdminView($event)"></app-calculate-schedule>
 </div>
 
 <div [hidden]="currentView!=this.usersView">

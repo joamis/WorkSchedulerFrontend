@@ -11,7 +11,7 @@ export class Group {
   constructor(
     public groupID: number = null,
     public dayOfWeek: string = '',
-    public startTimeMinSinceMid: number = null,
+    public startTime: string = '',
     public duration: number = null,
     public numberOfPeople: number = null,
   ) {

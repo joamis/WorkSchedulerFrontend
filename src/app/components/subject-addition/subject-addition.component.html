@@ -1,5 +1,4 @@
-<link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
-<div class="login-form">
+<div class="login-form container-fluid" align="center">
   <form #subjectAddition="ngForm">
 
     <div class="form-group">
@@ -7,11 +6,12 @@
       <input type="text" class="form-control" id="nameOfSubject" name="nameOfSubject" required="required"
              [(ngModel)]="subject.nameOfSubject">
     </div>
-    <button type="button" (click)="addGroup()">Add group</button>
     <div *ngFor="let singleGroup of subject.groups; index as i" class="single_group">
       <div class="container single-group-addition">
+        <br><label for="daysPicker">Group ID</label>
         <input placeholder="Choose group id" type="number" class="form-control" name=groupID{{i}} required
                [(ngModel)]="subject.groups[i].groupID">
+        <br><label for="daysPicker">Pick class day</label><br>
         <input placeholder="Pick class day" [(ngModel)]="subject.groups[i].dayOfWeek" list="days" id="daysPicker"
                required name=daysPicker{{i}} />
         <datalist id="days">
@@ -23,12 +23,15 @@
           <option value="Saturday">
           <option value="Friday">
         </datalist>
-        <label for="daysPicker">Time of day</label>
-        <ngb-timepicker name=timeOfDayPicker{{i}} (ngModelChange)="propagetaAsMinutes($event, i)"
-                        [(ngModel)]="time"></ngb-timepicker>
+        <br><label for="startime">Class start time [HHMM]</label>
+        <input type="string" placeholder="Class start time [HHMM]" class="form-control" id="startime" name=startime{{i}}
+               required="required"
+               [(ngModel)]="subject.groups[i].startTime">
+        <br><label for="duration">Class duration [minutes]</label>
         <input type="number" placeholder="Class duration [minutes]" class="form-control" id="duration" name=duration{{i}}
                required="required"
                [(ngModel)]="subject.groups[i].duration">
+        <br><label for="numberOfPeople">Limit of students</label>
         <input placeholder="Number of people limit" type="number" class="form-control" id="numberOfPeople"
                name=numberOfPeople{{i}} required="required"
                [(ngModel)]="subject.groups[i].numberOfPeople">
@@ -36,10 +39,16 @@
         <button class="btn-danger float-right" (click)="deleteGroup(i)"> Remove group</button>
       </div>
     </div>
-      <button *ngIf="!this.updateOption" type="submit" class="btn btn-success" style="float:right;" (click)="addSubject()">Add subject</button>
-      <button *ngIf="this.updateOption" type="submit" class="btn btn-success" style="float:right;" (click)="updateSubject()">Update subject</button>
+    <button class="btn btn-success float-right" (click)="addGroup()">Add another group</button>
+    <br>
+    <br>
+    <br>
+      <button *ngIf="!this.updateOption" type="submit" class="btn btn-success float-right" (click)="addSubject()">Add subject</button>
+      <button *ngIf="this.updateOption" type="submit" class="btn btn-success float-right" (click)="updateSubject()">Update subject</button>
   </form>
-  <button type="button" class="btn btn-secondary" (click)="goBack()">Back</button>
+  <br>
+  <button type="button" class="btn btn-secondary float-left" (click)="goBack()">Back</button>
+  <br>
 </div>
 
 

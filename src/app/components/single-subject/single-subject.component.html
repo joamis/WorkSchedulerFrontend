@@ -1,14 +1,13 @@
-<div class="container-fluid all-subjects">
-    <div>
+<div class="container all-subjects" align="center">
       <p >Name of subject:  {{subject.nameOfSubject}}</p>
-    </div>
+  <hr>
     <div *ngFor="let group of this.subject.groups">
-      <div class="container-fluid single-group">
-        <p>Group ID:   {{group.groupID}}</p>
-        <p>Number of people:   {{group.numberOfPeople}}</p>
-        <p>Date:         {{group.dayOfWeek}}</p>
-        <p>Class start time:   {{group.startTimeMinSinceMid}}</p>
-        <p>Class duration:   {{group.duration}}</p>
+      <div class="container single-group">
+       Group ID:   {{group.groupID}}<br>
+       Limit of students:   {{group.numberOfPeople}}<br>
+       Day:         {{group.dayOfWeek}}<br>
+        Class start time: {{group.startTime}} [HHMM]<br>
+       Class duration:   {{group.duration}} [min]
       </div>
     </div>
     <div class="row">

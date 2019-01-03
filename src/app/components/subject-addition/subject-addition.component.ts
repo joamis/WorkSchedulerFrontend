@@ -14,7 +14,6 @@ export class SubjectAdditionComponent implements OnInit {
   @Input() updateOption;
   @Output() backButtonPressed = new EventEmitter();
   @Output() subjectAdded = new EventEmitter();
-  time =  {hour: 0, minute: 0};
 
   constructor(private subjectService: SingleSubjectService) {
   }
@@ -48,6 +47,6 @@ export class SubjectAdditionComponent implements OnInit {
   }
 
   propagetaAsMinutes(newVaue, index: number) {
-    this.subject.groups[index].startTimeMinSinceMid = newVaue.hour * 60 + newVaue.minute;
+    this.subject.groups[index].startTime = newVaue.hour * 60 + newVaue.minute;
   }
 }

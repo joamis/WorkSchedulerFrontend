@@ -1,13 +1,15 @@
 .all-subjects
 {
   padding: 2%;
-  margin: 2%;
-  background-color: lightskyblue;
+  margin: 4%;
+  background: #b8cdef;
 }
 
 .single-group
 {
   padding: 2%;
-  margin: 2%;
-  background-color: #b8cdef;
+  margin: 3%;
+  width: 75%;
+  left: 50%;
+  background-color: #17a2b8;
 }

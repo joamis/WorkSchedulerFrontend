@@ -29,6 +29,7 @@ import { SubjectAdditionComponent } from './components/subject-addition/subject-
 import {ReadyTimetableComponent} from './components/ready-timetable/ready-timetable.component';
 import { StudentAdditionComponent } from './components/student-addition/student-addition.component';
 import { UserAdditionComponent } from './components/user-addition/user-addition.component';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { UserAdditionComponent } from './components/user-addition/user-addition.
     AppRoutingModule,
     HttpClientModule,
     NgbModule.forRoot(),
-    FormsModule
+    FormsModule,
+    MatGridListModule
   ],
   entryComponents: [DetailedGroupComponent, CalculateScheduleComponent],
   providers: [GroupService, PreferenceService, LoginService, LoggedStudentService, NgbActiveModal, CalculateScheduleService ],
