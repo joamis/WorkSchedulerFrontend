@@ -6,7 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TimetableComponent } from './components/timetable/timetable.component';
 import { GroupComponent } from './components/group/group.component';
 import {GroupService} from './services/group.service';
-import { HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {NgbActiveModal, NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DetailedGroupComponent } from './components/detailed-group/detailed-group.component';
 import {PreferenceService} from './services/preference.service';
@@ -30,6 +30,7 @@ import {ReadyTimetableComponent} from './components/ready-timetable/ready-timeta
 import { StudentAdditionComponent } from './components/student-addition/student-addition.component';
 import { UserAdditionComponent } from './components/user-addition/user-addition.component';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {TokenInterceptor} from './services/TokenInterceptor';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatGridListModule
   ],
   entryComponents: [DetailedGroupComponent, CalculateScheduleComponent],
-  providers: [GroupService, PreferenceService, LoginService, LoggedStudentService, NgbActiveModal, CalculateScheduleService ],
+  providers: [GroupService, PreferenceService, LoginService, LoggedStudentService, NgbActiveModal, CalculateScheduleService,     {
+    provide: HTTP_INTERCEPTORS,
+    useClass: TokenInterceptor,
+    multi: true
+  } ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

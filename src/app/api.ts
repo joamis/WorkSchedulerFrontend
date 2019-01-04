@@ -10,3 +10,9 @@ export const isScheduleCalculatedUrl = server + '/isScheduleCalculated';
 export const studentsUrl = server + '/students'
 export const subjectsUrl = server + '/subjects'
 export const resetCalculatedScheduleUrl = server + '/resetScheduleWork'
+
+
+export function getWithToken(url, token): string {
+  const tokenWithPrefix = '?token=' + token;
+  return `${url}${tokenWithPrefix}`;
+}

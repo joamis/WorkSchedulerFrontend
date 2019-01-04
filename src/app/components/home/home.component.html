@@ -24,8 +24,33 @@
       </div>
     </div>
   </nav>
+
 <div class="container-fluid row">
   <div class="offset-md-3 offset-sm-0 col-md-6 col-sm-12 main-content">
+    <div class="home_view_div" [hidden]="currentView!=this.homeView" align="center">
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <br>
+      <h1>Welcome to work scheduler system</h1>
+      <hr>
+      <h2>Click below to login or register</h2>
+      <h6> If you are a student, please make sure to use username provided by your administrator </h6>
+      <br>
+      <br>
+          <button class="btn btn-info" (click)="goToLoginView()">Login</button>
+      <hr>
+          <button class="btn btn-info" (click)="goToRegistrationView()">Register</button>
+    </div>
+
     <app-registration [hidden]="currentView!='REGISTER'" (backButtonPressed)="goHome($event)"></app-registration>
     <app-login [hidden]="currentView!='LOGIN'" (adminLogedIn)="goToAdminView()" (userLogedIn)="userLoggedIn($event)"></app-login>
     <app-timetable [student]="loggedStudent"
