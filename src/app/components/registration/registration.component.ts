@@ -25,6 +25,7 @@ export class RegistrationComponent implements OnInit {
     this.registrationService.registerUser(this.user).subscribe(() => {
      // this.goToLogin();
       console.log('zarejestrowany');
+      this.goHome();
     });
   }
 

@@ -35,7 +35,6 @@ export class UsersComponent implements OnInit {
   }
 
   goToUsersViewAndReload() {
-    console.log('1234567')
     this.singleUserService.getUsers().subscribe(users => {
         this.users = users;
         this.goToUsersView();
